@@ -4,11 +4,11 @@ class Solution:
         maxx=0
         buy=prices[0]
         for i in range(1, len(prices)):
-            if prices[i] < buy:
-                buy = prices[i]
-            else:
-                profit=prices[i]-buy
-                if (profit>maxx):
-                    maxx=profit
+            # if prices[i] < buy:
+            #     buy = prices[i]
+            buy=min(buy,prices[i])
+
+            # else:
+            maxx = max(maxx, prices[i] - buy)
               
         return maxx
