@@ -1,9 +1,13 @@
 class Solution:
     def canConstruct(self, ransomNote: str, magazine: str) -> bool:
-        from collections import Counter
-        count=Counter(ransomNote)
-        count2=Counter(magazine)
-        for i in count.keys():
-            if (count[i]>count2[i]):
+        counter=defaultdict(int)
+        for c in magazine:
+            counter[c]+=1
+        for c in ransomNote:
+            if c not in counter:
                 return False
+            elif counter[c]==1:
+                del counter[c]
+            else:
+                counter[c]-=1
         return True
