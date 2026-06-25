@@ -1,20 +1,15 @@
 class Solution:
     def isValid(self, s: str) -> bool:
+        pairs={')':'(', ']':'[', '}':'{'}
         stk=[]
-        for op in s:
-            if (op=='(') or (op=='{') or (op=='['):
-                stk.append(op)
+        for c in s:
+            if (c not in pairs):
+                stk.append(c)
             else:
                 if not stk:
                     return False
-                if (op==')'):
-                    if (stk[-1]!='('):
+                else:
+                    popped=stk.pop()
+                    if popped!=pairs[c]:
                         return False
-                elif (op=='}'):
-                    if (stk[-1]!='{'):
-                        return False
-                elif (op==']'):
-                    if (stk[-1]!='['):
-                        return False
-                stk.pop()
-        return (len(stk)==0)
+        return not stk
