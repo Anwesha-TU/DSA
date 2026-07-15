@@ -3,22 +3,25 @@ class Solution:
         n=len(nums)
         l=0
         r=n-1
+        while l<r:
+            m=(l+r)//2
+            if nums[m]>nums[r]:
+                l=m+1
+            else:
+                r=m
+        min_index=l
+        if min_index==0:
+            l,r=0,n-1
+        elif target>=nums[0] and target <=nums[min_index-1]:
+            l,r=0, min_index-1
+        else:
+            l,r=min_index,n-1
         while l<=r:
-            mid=(l+r)//2
-            flag=0
-            if nums[l]<=nums[mid]:
-                flag=1
-            if target==nums[mid]:
-                return mid
-            elif flag == 1 and nums[l] <= target < nums[mid]:
-                r = mid - 1
-
-            elif flag == 1:
-                l = mid + 1
-
-            elif flag == 0 and nums[mid] < target <= nums[r]:
-                l = mid + 1
-
-            elif flag == 0:
-                r = mid - 1
+            m=(l+r)//2
+            if nums[m]==target:
+                return m
+            elif nums[m]<target:
+                l=m+1
+            else:
+                r=m-1
         return -1
