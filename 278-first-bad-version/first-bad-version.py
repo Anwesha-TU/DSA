@@ -7,10 +7,11 @@ class Solution:
             return 1
         l=1
         r=n
-        while (l<r):
+        while (l<=r):
             m=(l+r)//2
             if (isBadVersion(m)==True):
-                r=m
+                ans=m
+                r=m-1
             else:
                 l=m+1
-        return l
+        return ans
