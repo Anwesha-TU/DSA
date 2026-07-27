@@ -5,13 +5,13 @@
 #         self.next = next
 class Solution:
     def insertGreatestCommonDivisors(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        from math import gcd
         curr=head
         while curr and curr.next:
             a=curr.val
             b=curr.next.val
-            while b!=0:
-                a,b=b,a%b
-            newnode=ListNode(a)
+            gcdd=gcd(a,b)
+            newnode=ListNode(gcdd)
             temp=curr.next
             curr.next=newnode
             newnode.next=temp
