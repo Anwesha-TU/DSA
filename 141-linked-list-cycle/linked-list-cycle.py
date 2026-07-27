@@ -14,3 +14,4 @@ class Solution:
             if slow==fast:
                 return True
         return False
+        #solution for O(1) space, ie, constant memory
