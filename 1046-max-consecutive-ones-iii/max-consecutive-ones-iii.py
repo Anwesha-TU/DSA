@@ -10,7 +10,9 @@ class Solution:
             while nums_zeros>k:
                 if nums[l]==0:
                     nums_zeros-=1
-                l+=1
+                    l+=1
+                else:
+                    l+=1
             w=r-l+1
             max_w=max(max_w,w)
         return max_w
