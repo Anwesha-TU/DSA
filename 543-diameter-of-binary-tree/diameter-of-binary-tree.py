@@ -6,6 +6,8 @@
 #         self.right = right
 class Solution:
     def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
         diameter=0
         def dia(node):
             nonlocal diameter
