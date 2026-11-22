@@ -6,8 +6,11 @@ class Solution:
             if i==n:
                 result.append(sol[:])
                 return
+            
+            #Dont pick nums[i]
             backtrack(i+1)
 
+            #Pick nums[i]
             sol.append(nums[i])
             backtrack(i+1)
             sol.pop()
